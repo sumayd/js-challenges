@@ -158,12 +158,22 @@
 
 // let arr = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 
-calcAverage = function (arr) {
-    let sum = 0;
-    for(i = 0; i < arr.length; i++){
-       sum += arr[i]
-    }
-    return sum / arr.length
-}
+// calcAverage = function (arr) {
+//     let sum = 0;
+//     for(i = 0; i < arr.length; i++){
+//        sum += arr[i]
+//     }
+//     return sum / arr.length
+// }
 
-console.log("Avarage: " + calcAverage([2,3,7]))
+// console.log("Avarage: " + calcAverage([2,3,7,21]))
+
+// Coding Challenge Developer Skills & Editor Setup
+ const printForecast = function(arr){
+    for(let i = 0; i < arr.length; i++){
+    let temp = String(arr[i])
+     console.log(`${temp}'ºC in ${i +1} days`)
+    }
+}
+printForecast([17, 21, 23])
+
