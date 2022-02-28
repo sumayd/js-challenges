@@ -1,5 +1,7 @@
-// //JavaScript Fundamentals – Part 1
-// //Coding Challenge #1
+//INCLUDE 1 - 7 SECTIONS
+
+//JavaScript Fundamentals – Part 1
+//Coding Challenge #1
 
 // let markHeight = 1.88;
 // let markWeights = 95;
@@ -169,11 +171,10 @@
 // console.log("Avarage: " + calcAverage([2,3,7,21]))
 
 // Coding Challenge Developer Skills & Editor Setup
- const printForecast = function(arr){
-    for(let i = 0; i < arr.length; i++){
-    let temp = String(arr[i])
-     console.log(`${temp}'ºC in ${i +1} days`)
-    }
-}
-printForecast([17, 21, 23])
-
+//  const printForecast = function(arr){
+//     for(let i = 0; i < arr.length; i++){
+//     let temp = String(arr[i])
+//      console.log(`${temp}'ºC in ${i +1} days`)
+//     }
+// }
+// printForecast([17, 21, 23])
