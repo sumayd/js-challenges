@@ -34,16 +34,42 @@ const restaurant = {
         `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
         );
     },
+    orderPasta(ing1, ing2, ing3) {
+        console.log(
+          `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
+        );
+      },
 };
+//real example
+// const ingredients = [
+//     prompt('Let\'s make pasta Ingredient 1?'),
+//     prompt('Ingredient 2?'),
+//     prompt('Ingredient 3?')
+// ];
+// console.log(ingredients);
+// restaurant.orderPasta(...ingredients);
 
-restaurant.orderDelivery({
-    time: '22:30',
-    address : 'Turkey, Kocaeli',
-    mainIndex : 2,
-    starterIndex: 2,
-});
+//objects
+const newRestaurant = { foundedIn: 1994, ...restaurant, founder : 'Founder'};
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Turkey Meal';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+// restaurant.orderDelivery({
+//     time: '22:30',
+//     address : 'Turkey, Kocaeli',
+//     mainIndex : 2,
+//     starterIndex: 2,
+// });
 
 
+//spread...
+// const str ='Sümeyye';
+// const letters = [...str, ' ' , 'S.'];
+// console.log(letters);
+// console.log(...str);
 // const {name , openingHours, categories} = restaurant;
 // console.log(name, openingHours, categories);
 
