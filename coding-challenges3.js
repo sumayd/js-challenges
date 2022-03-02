@@ -12,6 +12,8 @@ Suppose we get data from a web service about a certain game (below). In this cha
 5. Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2')
 6. Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
+
+*/
 const game = {
     team1: 'Bayern Munich',
     team2: 'Borrussia Dortmund',
