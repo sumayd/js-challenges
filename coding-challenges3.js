@@ -1,175 +1,85 @@
-//--------------------//
+//INCLUDE 9. SECTION
 'use strict';
 
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
-//destructuring arrays
-const restaurant = {
-    name: 'Classico Italiano',
-    location: 'Via Angelo Tavanti 23, Firenze, Italy',
-    categories: ['Italian' , 'Pizzeria', 'Vegeterian', 'Organic'],
-    starterMenu: ['Focaccia','Bruschetta','Garlic Bread','Caprese Salad'],
-    mainMenu: ['Pizza','Pasta','Risotto'],
-    openingHours: {
-        thu: {
-          open: 12,
-          close: 22,
-        },
-        fri: {
-          open: 11,
-          close: 23,
-        },
-        sat: {
-          open: 0, // Open 24 hours
-          close: 24,
-        },
-      },
-    order(starterIndex, mainIndex) {
-        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//Coding Challenge #1
+/* 
+We're building a football betting app
+Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
+1. Create one player array for each team (variables 'players1' and 'players2')
+2. The first player in any player array is the goalkeeper and the others are field players. For Bayern Munich (team 1) create one variable ('gk') with the goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10 field players
+3. Create an array 'allPlayers' containing all players of both teams (22 players)
+4. During the game, Bayern Munich (team 1) used 3 substitute players. So create a new array ('players1Final') containing all the original team1 players plus 'Thiago', 'Coutinho' and 'Perisic'
+5. Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2')
+6. Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
+7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
+const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+      [
+        'Neuer',
+        'Pavard',
+        'Martinez',
+        'Alaba',
+        'Davies',
+        'Kimmich',
+        'Goretzka',
+        'Coman',
+        'Muller',
+        'Gnarby',
+        'Lewandowski',
+      ],
+      [
+        'Burki',
+        'Schulz',
+        'Hummels',
+        'Akanji',
+        'Hakimi',
+        'Weigl',
+        'Witsel',
+        'Hazard',
+        'Brandt',
+        'Sancho',
+        'Gotze',
+      ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+      team1: 1.33,
+      x: 3.25,
+      team2: 6.5,
     },
+  };
 
-    orderDelivery : function ({starterIndex, mainIndex, time, address }) {
-        console.log(
-        `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-        );
-    },
-    orderPasta(ing1, ing2, ing3) {
-        console.log(
-          `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
-        );
-      },
-    orderPizza : function (mainIngredient, ...otherIngredient) {
-        console.log(mainIngredient);
-        console.log(otherIngredient);
-    },
-};
+const [ players1, players2 ] = game.players;
+//   console.log(players1),
+//   console.log(players2);
+const [ gk, ...fieldplayers ] = players1;
+//   console.log(gk, fieldplayers);
 
-restaurant.orderPizza('mushrooms' ,'onion' , 'olives' , 'spinachh');
-restaurant.orderPizza('mushrooms')
+const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
 
-//Logical Assignment Operators
-const rest1 = {
-    name: 'Capri',
-    numGuest: 0,
-};
-const rest2 = {
-    name: 'La Piaz',
-    owner : 'Givani Rossi',
-};
+const players1Final = [...players1, 'Thiago' , 'Coutinho', 'Perisic'];
+console.log(players1Final);
 
-//Nullish Coalescing Operator (??)
-// rest1.numGuest ??= 10;
-// rest2.numGuest ??= 10;
-// rest1.owner = rest1.owner && '<ANONYMOUS>';
-// rest2.owner = rest2.owner && '<ANONYMOUS>';
-// The logical AND assignment
-rest1.owner &&= '<ANONYMOUS>';
-rest2.owner &&= '<ANONYMOUS>';
-// The logical OR assignment
-// rest1.numGuest ||= 10;
-// rest2.numGuest ||= 10;
-// rest1.numGuest = rest1.numGuest || 10;
-// rest2.numGuest = rest2.numGuest || 10;
-console.log(rest1);
-console.log(rest2);
-//FUNCTIONS
-// const add = function(...numbers) {
-//     let sum = 0;
-//     for (let i= 0; i < numbers.length; i++) {
-//         sum += numbers[i];
-//     }
-//     console.log(sum);
-// };
+const { 
+    team1, 
+    x : draw, 
+    team2 
+} = game.odds;
+// console.log(team1, draw, team2);
 
-// add(2,5);
-// add(5,3,7,2);
-// add(8,2,5,3,2,1,4);
+const printGoals = function (...players) {
+    // console.log(players);
+    console.log(`${players.length} goals were scored.`);
+}
 
+printGoals('Lewandowski', 'Gnarby',);
+printGoals('Lewandowski', 'Gnarby', 'Lewandowski');
+printGoals(...game.scored);
 
-//SPREAD, because an RIGHT side of =
-// const arr = [1,2, ...[3,4]];
-//REST because an LEFT side of =
-// const [a,b, ...others] = [1,2,3,4,5];
-// console.log(a,b, others);
-
-// const [pizza, risotto , ...otherFood] = [
-//     ...restaurant.mainMenu,
-//     ...restaurant.starterMenu
-// ];
-// console.log(pizza,risotto,otherFood);
-
-//objects
-// const { sat, ...weekdays} = restaurant.openingHours;
-// console.log('Open days:', weekdays);
-
-
-//real example
-// const ingredients = [
-//     prompt('Let\'s make pasta Ingredient 1?'),
-//     prompt('Ingredient 2?'),
-//     prompt('Ingredient 3?')
-// ];
-// console.log(ingredients);
-// restaurant.orderPasta(...ingredients);
-
-//objects
-// const newRestaurant = { foundedIn: 1994, ...restaurant, founder : 'Founder'};
-// console.log(newRestaurant);
-
-// const restaurantCopy = { ...restaurant };
-// restaurantCopy.name = 'Turkey Meal';
-// console.log(restaurantCopy.name);
-// console.log(restaurant.name);
-// restaurant.orderDelivery({
-//     time: '22:30',
-//     address : 'Turkey, Kocaeli',
-//     mainIndex : 2,
-//     starterIndex: 2,
-// });
-
-
-//spread...
-// const str ='Sümeyye';
-// const letters = [...str, ' ' , 'S.'];
-// console.log(letters);
-// console.log(...str);
-// const {name , openingHours, categories} = restaurant;
-// console.log(name, openingHours, categories);
-
-// const {
-//     name: restaurantName, 
-//     openingHours: hours, 
-//     categories: tags,
-// } = restaurant;
-
-// console.log(restaurantName, hours, tags);
-
-// const { menu = [] , starterMenu: starters = [] } = restaurant;
-// console.log(menu, starters);
-
-// const { fri } = openingHours;
-// console.log(fri);
-// const { 
-//     fri : {open :o , close : c} ,
-// } = openingHours;
-// console.log(o, c);
-
-
-// let [main, , secondary] = restaurant.categories;
-// console.log(main ,secondary);
-
-// receive 2 return values form a function
-// const [starter, main]= restaurant.order(2,0);
-// console.log(starter, main);
-
-// const nested = [2,4, [5,6]];
-// const [i , ,j] = nested;
-// console.log(i,j);
-
-// const [i,  , [j, k]] = nested;
-// console.log(i,j,k);
-
-//default values
-// const [p=1, q=1, r=1] = [8, 9];
-// console.log(p ,q, r);
+team1 < team2 && console.log('Team 1 is more likely to win');
+team1 > team2 && console.log('Team 2 is more likely to win');
