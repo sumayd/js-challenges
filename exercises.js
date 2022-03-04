@@ -5,7 +5,7 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 //destructuring arrays
-const weekdays = ['mod', 'tue', 'wed','thu', 'fri', 'sat','sun'];
+const weekdays = ['mon', 'tue', 'wed','thu', 'fri', 'sat','sun'];
 const hours = {
   [weekdays[3]]: {
     open: 12,
@@ -48,13 +48,38 @@ const restaurant = {
     },
 };
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-// for (const item of menu) console.log(item);
+//EXAMPLE
+const days = ['mon','tue','wed','thu','fri','sat','sun'];
 
-for (const [i, el] of menu.entries()){
-  console.log(`${i + 1} : ${el}`);
+for (const day of days){
+  const open = restaurant.hours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
 }
+
+//METHODS
+console.log(restaurant.order?.(0,1) ?? 'Method doesnt exist');
+console.log(restaurant.orderRisotto?.(0,1) ?? 'Method doesnt exist');
+
+//ARRAYS
+const users = [{
+  name : 'Sümeyye',
+  email : 'sumeyye.aydemir@gmail.com'
+}];
+console.log(users[0]?.name ?? 'User array empty');
+// if(restaurant.hours.mon && restaurant.hours.mon) console.log(restaurant.hours.mon.open);
+
+// //with optional chaining
+// console.log(restaurant.hours.mon?.open);
+// console.log(restaurant.hours?.mon?.open);
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// // for (const item of menu) console.log(item);
+
+// for (const [i, el] of menu.entries()){
+//   console.log(`${i + 1} : ${el}`);
+// }
 
 // console.log(...menu.entries());
 // restaurant.orderPizza('mushrooms' ,'onion' , 'olives' , 'spinachh');
