@@ -45,18 +45,27 @@ const restaurant = {
     },
 };
 
-restaurant.orderPizza('mushrooms' ,'onion' , 'olives' , 'spinachh');
-restaurant.orderPizza('mushrooms')
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()){
+  console.log(`${i + 1} : ${el}`);
+}
+
+// console.log(...menu.entries());
+// restaurant.orderPizza('mushrooms' ,'onion' , 'olives' , 'spinachh');
+// restaurant.orderPizza('mushrooms')
 
 //Logical Assignment Operators
-const rest1 = {
-    name: 'Capri',
-    numGuest: 0,
-};
-const rest2 = {
-    name: 'La Piaz',
-    owner : 'Givani Rossi',
-};
+// const rest1 = {
+//     name: 'Capri',
+//     numGuest: 0,
+// };
+// const rest2 = {
+//     name: 'La Piaz',
+//     owner : 'Givani Rossi',
+// };
 
 //Nullish Coalescing Operator (??)
 // rest1.numGuest ??= 10;
@@ -64,15 +73,15 @@ const rest2 = {
 // rest1.owner = rest1.owner && '<ANONYMOUS>';
 // rest2.owner = rest2.owner && '<ANONYMOUS>';
 // The logical AND assignment
-rest1.owner &&= '<ANONYMOUS>';
-rest2.owner &&= '<ANONYMOUS>';
+// rest1.owner &&= '<ANONYMOUS>';
+// rest2.owner &&= '<ANONYMOUS>';
 // The logical OR assignment
 // rest1.numGuest ||= 10;
 // rest2.numGuest ||= 10;
 // rest1.numGuest = rest1.numGuest || 10;
 // rest2.numGuest = rest2.numGuest || 10;
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 //FUNCTIONS
 // const add = function(...numbers) {
 //     let sum = 0;
@@ -173,3 +182,8 @@ console.log(rest2);
 //default values
 // const [p=1, q=1, r=1] = [8, 9];
 // console.log(p ,q, r);
+
+
+
+//--------------------//
+
