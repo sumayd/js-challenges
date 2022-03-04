@@ -1,2 +1,2 @@
 # js-challenges
- Include Udemy The Complete JavaScript Course
+Include The Complete JavaScript Course 2022: From Zero to Expert!
