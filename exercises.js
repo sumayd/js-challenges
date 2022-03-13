@@ -5,31 +5,34 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 //destructuring arrays
+const weekdays = ['mon', 'tue', 'wed','thu', 'fri', 'sat','sun'];
+const hours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
     name: 'Classico Italiano',
     location: 'Via Angelo Tavanti 23, Firenze, Italy',
     categories: ['Italian' , 'Pizzeria', 'Vegeterian', 'Organic'],
     starterMenu: ['Focaccia','Bruschetta','Garlic Bread','Caprese Salad'],
     mainMenu: ['Pizza','Pasta','Risotto'],
-    openingHours: {
-        thu: {
-          open: 12,
-          close: 22,
-        },
-        fri: {
-          open: 11,
-          close: 23,
-        },
-        sat: {
-          open: 0, // Open 24 hours
-          close: 24,
-        },
-      },
+    hours,
     order(starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
 
-    orderDelivery : function ({starterIndex, mainIndex, time, address }) {
+    orderDelivery({starterIndex, mainIndex, time, address }) {
         console.log(
         `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
         );
@@ -39,19 +42,64 @@ const restaurant = {
           `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
         );
       },
-    orderPizza : function (mainIngredient, ...otherIngredient) {
+    orderPizza(mainIngredient, ...otherIngredient) {
         console.log(mainIngredient);
         console.log(otherIngredient);
     },
 };
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-
-// for (const item of menu) console.log(item);
-
-for (const [i, el] of menu.entries()){
-  console.log(`${i + 1} : ${el}`);
+//properties NAMES
+const properties = Object.keys(hours);
+// console.log(properties);
+let openStr = `We are open ${properties.length} days: `;
+for ( const day of properties ){
+  openStr += `${day}, `;
 }
+// console.log(openStr);
+//properties VALUES
+const values = Object.values(hours);
+// console.log(values);
+
+const entires = Object.entries(hours);
+// console.log(entires);
+for (const x of entires){
+  // console.log(x);
+}
+
+for (const [day , {open, close}] of entires) {
+// console.log(`On ${day} we open at ${open} and close ${close}`);  
+}
+//EXAMPLE
+// const days = ['mon','tue','wed','thu','fri','sat','sun'];
+
+// for (const day of days){
+//   const open = restaurant.hours[day]?.open ?? 'closed';
+//   console.log(`On ${day}, we open at ${open}`);
+// }
+
+//METHODS
+// console.log(restaurant.order?.(0,1) ?? 'Method doesnt exist');
+// console.log(restaurant.orderRisotto?.(0,1) ?? 'Method doesnt exist');
+
+//ARRAYS
+const users = [{
+  name : 'Sümeyye',
+  email : 'sumeyye.aydemir@gmail.com'
+}];
+// console.log(users[0]?.name ?? 'User array empty');
+// if(restaurant.hours.mon && restaurant.hours.mon) console.log(restaurant.hours.mon.open);
+
+// //with optional chaining
+// console.log(restaurant.hours.mon?.open);
+// console.log(restaurant.hours?.mon?.open);
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// // for (const item of menu) console.log(item);
+
+// for (const [i, el] of menu.entries()){
+//   console.log(`${i + 1} : ${el}`);
+// }
 
 // console.log(...menu.entries());
 // restaurant.orderPizza('mushrooms' ,'onion' , 'olives' , 'spinachh');
@@ -186,4 +234,44 @@ for (const [i, el] of menu.entries()){
 
 
 //--------------------//
+
+//Quiz app
+// Maps: Iteration
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+
+
+console.log(question.get('question'));
+
+for( const [key, value] of question){
+  if( typeof key === 'number'){
+    console.log(`Answer ${key} : ${value}`);
+  }
+}
+// const answer = Number(prompt('Your answer'));
+// console.log(answer);
+
+
+// console.log(question.get(question.get('correct') === answer ));
+
+//convert map to array
+console.log([...question]);
+
+console.log([...question.keys()]);
+console.log([...question.values()]);
+console.log([...question.entries()]);
+
+
+////////////////////
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
 
