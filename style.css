@@ -1,0 +1,10 @@
+textarea.text {
+    height: 20px;
+    margin-right: 10px;
+}
+button.btn {
+    background: #000;
+    height: 30px;
+    width: 30px;
+    border: none;
+}
