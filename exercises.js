@@ -1,9 +1,6 @@
 //--------------------//
 'use strict';
 
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
 //destructuring arrays
 const weekdays = ['mon', 'tue', 'wed','thu', 'fri', 'sat','sun'];
 const hours = {
@@ -246,14 +243,14 @@ const question = new Map([
   [true, 'Correct 🎉'],
   [false, 'Try again!'],
 ]);
-console.log(question);
+// console.log(question);
 
 
-console.log(question.get('question'));
+// console.log(question.get('question'));
 
 for( const [key, value] of question){
   if( typeof key === 'number'){
-    console.log(`Answer ${key} : ${value}`);
+    // console.log(`Answer ${key} : ${value}`);
   }
 }
 // const answer = Number(prompt('Your answer'));
@@ -263,15 +260,29 @@ for( const [key, value] of question){
 // console.log(question.get(question.get('correct') === answer ));
 
 //convert map to array
-console.log([...question]);
+// console.log([...question]);
 
-console.log([...question.keys()]);
-console.log([...question.values()]);
-console.log([...question.entries()]);
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
+// console.log([...question.entries()]);
 
 
 ////////////////////
-// const flights =
-//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-
+// _Delayed_Departure;fao93766109;txl2133758440;11:25
+// _Arrival;bru0943384722;fao93766109;11:45
+// _Delayed_Arrival;hel7439299980;fao93766109;12:05
+// _Departure;fao93766109;lis2323639855;12:30
+const code = str => str.slice(0, 3).toUpperCase();
+for ( const flight of flights.split('+')){
+  const [type , to, from , time ] = flight.split(';');
+// console.log({type}, {to}, {from}, {time})
+const toCode = code(to);
+const fromCode = code(from);
+const timeStr = `${time.replace(':' , 'h')}`;
+const typeStr = `${type.replaceAll('_' , ' ').trim()}`;
+const outPut = `${typeStr.startsWith('Delayed') ? '🔴' : ' '} ${typeStr} from ${toCode} to ${fromCode} (${timeStr})`.padStart(50);
+console.log(outPut)
+}
